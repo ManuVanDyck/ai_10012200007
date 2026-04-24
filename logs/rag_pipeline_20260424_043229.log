@@ -1,0 +1,301 @@
+2026-04-24 04:32:29,632 - INFO - [pipeline:configure_logging] - Logging configured: ./logs\rag_pipeline_20260424_043229.log
+2026-04-24 04:32:29,632 - INFO - [__main__:main] - RAG PIPELINE EXECUTION STARTED
+2026-04-24 04:32:29,632 - INFO - [__main__:main] - STAGE 1: DATA CLEANING
+2026-04-24 04:32:29,633 - INFO - [data_processing:clean_csv] - Starting CSV cleaning: Ghana_Election_Result.csv
+2026-04-24 04:32:29,641 - INFO - [data_processing:clean_csv] - CSV cleaning completed: 615 rows remaining (0 duplicates removed)
+2026-04-24 04:32:29,642 - INFO - [__main__:main] - Cleaned CSV: 615 rows, 8 columns
+2026-04-24 04:32:29,644 - INFO - [__main__:main] - STAGE 2: PDF EXTRACTION
+2026-04-24 04:32:29,645 - INFO - [data_processing:extract_clean_pdf] - Starting PDF extraction: 2025-Budget-Statement-and-Economic-Policy_v4.pdf
+2026-04-24 04:32:47,131 - INFO - [data_processing:extract_clean_pdf] - PDF extraction completed: 702077 characters extracted
+2026-04-24 04:32:47,131 - INFO - [__main__:main] - Extracted PDF text length: 702077 characters
+2026-04-24 04:32:47,131 - INFO - [__main__:main] - STAGE 3: CHUNKING
+2026-04-24 04:32:47,133 - INFO - [data_processing:chunk_fixed_size] - Fixed-size chunking completed: 1561 chunks, avg length: 499.73 chars
+2026-04-24 04:32:47,148 - INFO - [data_processing:chunk_by_sentences] - Sentence-based chunking completed: 937 chunks, avg length: 922.52 chars
+2026-04-24 04:32:47,148 - INFO - [__main__:main] - STAGE 4: EMBEDDING CREATION
+2026-04-24 04:32:47,148 - INFO - [embeddings:create_embeddings] - Starting embedding pipeline: model=all-MiniLM-L6-v2, chunks=937
+2026-04-24 04:32:47,150 - INFO - [sentence_transformers.base.model:__init__] - No device provided, using cpu
+2026-04-24 04:32:48,284 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:32:48,399 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-24 04:32:48,604 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:32:48,720 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-24 04:32:48,723 - INFO - [sentence_transformers.base.model:_load_modules] - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-04-24 04:32:48,933 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:32:49,048 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-24 04:32:49,259 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:32:49,376 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-04-24 04:32:49,606 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:32:49,606 - WARNING - [huggingface_hub.utils._http:_warn_on_warning_headers] - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-04-24 04:32:49,721 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-24 04:32:49,926 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:32:50,042 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-04-24 04:32:50,247 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-04-24 04:32:50,448 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:32:50,562 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-24 04:32:50,904 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-04-24 04:32:51,111 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-24 04:32:51,315 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-24 04:32:51,525 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-24 04:32:51,731 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:32:51,848 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-24 04:32:52,050 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:32:52,165 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-24 04:32:52,371 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:32:52,486 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-24 04:32:52,745 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:32:52,861 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-24 04:32:53,087 - INFO - [httpx:_send_single_request] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-24 04:32:53,295 - INFO - [httpx:_send_single_request] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-24 04:32:53,554 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:32:53,669 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-04-24 04:32:53,879 - INFO - [httpx:_send_single_request] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-04-24 04:33:33,817 - INFO - [embeddings:create_embeddings] - Embeddings created: shape=(937, 384), dtype=float32
+2026-04-24 04:33:33,818 - INFO - [__main__:main] - STAGE 5: VECTOR STORAGE
+2026-04-24 04:33:33,818 - INFO - [embeddings:store_in_chroma] - Starting Chroma storage: collection=budget_chunks, chunks=937
+2026-04-24 04:33:34,219 - INFO - [embeddings:store_in_chroma] - Chroma storage completed: 937 chunks stored in 'budget_chunks'
+2026-04-24 04:33:34,220 - INFO - [__main__:main] - STAGE 6: RETRIEVAL TESTING
+2026-04-24 04:33:34,220 - INFO - [__main__:main] - Retrieving for query: 'economic growth projections'
+2026-04-24 04:33:34,274 - INFO - [__main__:main] - Top combined scores: ['0.535', '0.254', '0.253']
+2026-04-24 04:33:34,275 - INFO - [__main__:main] - Top similarity scores: ['0.479', '0.220', '0.219']
+2026-04-24 04:33:34,276 - INFO - [__main__:main] - Top domain scores: ['0.667', '0.333', '0.333']
+2026-04-24 04:33:34,796 - INFO - [__main__:main] - Hybrid distances: ['0.521', '0.780', '0.781']
+2026-04-24 04:33:34,796 - INFO - [__main__:main] - Retrieving for query: 'government budget allocation'
+2026-04-24 04:33:34,814 - INFO - [__main__:main] - Top combined scores: ['0.420', '0.408', '0.255']
+2026-04-24 04:33:34,815 - INFO - [__main__:main] - Top similarity scores: ['0.171', '0.154', '0.150']
+2026-04-24 04:33:34,815 - INFO - [__main__:main] - Top domain scores: ['1.000', '1.000', '0.500']
+2026-04-24 04:33:35,227 - INFO - [__main__:main] - Hybrid distances: ['0.829', '0.846', '0.850']
+2026-04-24 04:33:35,227 - INFO - [__main__:main] - Retrieving for query: 'fiscal policy measures'
+2026-04-24 04:33:35,248 - INFO - [__main__:main] - Top combined scores: ['0.576', '0.535', '0.523']
+2026-04-24 04:33:35,248 - INFO - [__main__:main] - Top similarity scores: ['0.395', '0.336', '0.319']
+2026-04-24 04:33:35,249 - INFO - [__main__:main] - Top domain scores: ['1.000', '1.000', '1.000']
+2026-04-24 04:33:35,631 - INFO - [__main__:main] - Hybrid distances: ['0.605', '0.664', '0.681']
+2026-04-24 04:33:35,631 - INFO - [__main__:main] - Retrieving for query: 'unrelated query like sports results'
+2026-04-24 04:33:35,652 - INFO - [__main__:main] - Top combined scores: ['-0.014', '-0.262', '-0.304']
+2026-04-24 04:33:35,655 - INFO - [__main__:main] - Top similarity scores: ['-0.449', '-0.482', '-0.434']
+2026-04-24 04:33:35,656 - INFO - [__main__:main] - Top domain scores: ['1.000', '0.250', '0.000']
+2026-04-24 04:33:36,078 - INFO - [__main__:main] - Hybrid distances: ['1.434', '1.449', '1.482']
+2026-04-24 04:33:36,078 - INFO - [__main__:main] - STAGE 7: COMPLETE PIPELINE DEMONSTRATION
+2026-04-24 04:33:36,079 - INFO - [pipeline:end_to_end_pipeline] - 
+================================================================================
+2026-04-24 04:33:36,079 - INFO - [pipeline:end_to_end_pipeline] - COMPLETE END-TO-END PIPELINE EXECUTION
+2026-04-24 04:33:36,079 - INFO - [pipeline:end_to_end_pipeline] - ================================================================================
+2026-04-24 04:33:36,079 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 1] USER QUERY INPUT
+2026-04-24 04:33:36,080 - INFO - [pipeline:end_to_end_pipeline] - Query: 'What are the economic growth projections?'
+2026-04-24 04:33:36,080 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 2] RETRIEVAL
+2026-04-24 04:33:36,111 - INFO - [pipeline:end_to_end_pipeline] - Retrieved 5 documents
+2026-04-24 04:33:36,112 - INFO - [pipeline:end_to_end_pipeline] - Similarity scores: ['0.4334', '0.2140', '0.2531', '0.2330', '0.1982']
+2026-04-24 04:33:36,112 - INFO - [pipeline:end_to_end_pipeline] - Domain scores: ['0.6667', '0.6667', '0.3333', '0.3333', '0.3333']
+2026-04-24 04:33:36,112 - INFO - [pipeline:end_to_end_pipeline] - Combined scores: ['0.5034', '0.3498', '0.2771', '0.2631', '0.2387']
+2026-04-24 04:33:36,113 - INFO - [pipeline:end_to_end_pipeline] -   Result 1: Similarity=0.4334, Domain=0.6667, Combined=0.5034, Distance=0.5666
+2026-04-24 04:33:36,113 - INFO - [pipeline:end_to_end_pipeline] -   Result 2: Similarity=0.2140, Domain=0.6667, Combined=0.3498, Distance=0.7860
+2026-04-24 04:33:36,113 - INFO - [pipeline:end_to_end_pipeline] -   Result 3: Similarity=0.2531, Domain=0.3333, Combined=0.2771, Distance=0.7469
+2026-04-24 04:33:36,113 - INFO - [pipeline:end_to_end_pipeline] -   Result 4: Similarity=0.2330, Domain=0.3333, Combined=0.2631, Distance=0.7670
+2026-04-24 04:33:36,113 - INFO - [pipeline:end_to_end_pipeline] -   Result 5: Similarity=0.1982, Domain=0.3333, Combined=0.2387, Distance=0.8018
+2026-04-24 04:33:36,115 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 3] CONTEXT SELECTION: 1503 chars selected
+2026-04-24 04:33:36,115 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 4] PROMPT GENERATED: template v2
+2026-04-24 04:33:36,116 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 5] LLM RESPONSE GENERATION
+2026-04-24 04:33:36,116 - INFO - [pipeline:end_to_end_pipeline] - LLM response generated
+2026-04-24 04:33:36,116 - INFO - [pipeline:end_to_end_pipeline] - LLM response: Based on context, GDP growth is projected to moderate to 4.0% in 2025.
+2026-04-24 04:33:36,116 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 6] PIPELINE SUMMARY
+2026-04-24 04:33:36,116 - INFO - [pipeline:end_to_end_pipeline] - Top similarity score: 0.4334
+2026-04-24 04:33:36,117 - INFO - [pipeline:end_to_end_pipeline] - Prompt length: 1814 chars
+2026-04-24 04:33:36,117 - INFO - [__main__:main] - Pipeline result: top_similarity=0.4334
+2026-04-24 04:33:36,117 - INFO - [pipeline:end_to_end_pipeline] - 
+================================================================================
+2026-04-24 04:33:36,117 - INFO - [pipeline:end_to_end_pipeline] - COMPLETE END-TO-END PIPELINE EXECUTION
+2026-04-24 04:33:36,118 - INFO - [pipeline:end_to_end_pipeline] - ================================================================================
+2026-04-24 04:33:36,118 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 1] USER QUERY INPUT
+2026-04-24 04:33:36,118 - INFO - [pipeline:end_to_end_pipeline] - Query: 'How is government budget allocated?'
+2026-04-24 04:33:36,118 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 2] RETRIEVAL
+2026-04-24 04:33:36,139 - INFO - [pipeline:end_to_end_pipeline] - Retrieved 5 documents
+2026-04-24 04:33:36,140 - INFO - [pipeline:end_to_end_pipeline] - Similarity scores: ['0.0584', '0.0545', '0.0480', '0.0235', '0.0492']
+2026-04-24 04:33:36,140 - INFO - [pipeline:end_to_end_pipeline] - Domain scores: ['1.0000', '1.0000', '1.0000', '1.0000', '0.5000']
+2026-04-24 04:33:36,140 - INFO - [pipeline:end_to_end_pipeline] - Combined scores: ['0.3409', '0.3381', '0.3336', '0.3165', '0.1845']
+2026-04-24 04:33:36,140 - INFO - [pipeline:end_to_end_pipeline] -   Result 1: Similarity=0.0584, Domain=1.0000, Combined=0.3409, Distance=0.9416
+2026-04-24 04:33:36,141 - INFO - [pipeline:end_to_end_pipeline] -   Result 2: Similarity=0.0545, Domain=1.0000, Combined=0.3381, Distance=0.9455
+2026-04-24 04:33:36,143 - INFO - [pipeline:end_to_end_pipeline] -   Result 3: Similarity=0.0480, Domain=1.0000, Combined=0.3336, Distance=0.9520
+2026-04-24 04:33:36,144 - INFO - [pipeline:end_to_end_pipeline] -   Result 4: Similarity=0.0235, Domain=1.0000, Combined=0.3165, Distance=0.9765
+2026-04-24 04:33:36,144 - INFO - [pipeline:end_to_end_pipeline] -   Result 5: Similarity=0.0492, Domain=0.5000, Combined=0.1845, Distance=0.9508
+2026-04-24 04:33:36,146 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 3] CONTEXT SELECTION: 1503 chars selected
+2026-04-24 04:33:36,147 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 4] PROMPT GENERATED: template v2
+2026-04-24 04:33:36,147 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 5] LLM RESPONSE GENERATION
+2026-04-24 04:33:36,148 - INFO - [pipeline:end_to_end_pipeline] - LLM response generated
+2026-04-24 04:33:36,148 - INFO - [pipeline:end_to_end_pipeline] - LLM response: No relevant information found in context.
+2026-04-24 04:33:36,148 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 6] PIPELINE SUMMARY
+2026-04-24 04:33:36,148 - INFO - [pipeline:end_to_end_pipeline] - Top similarity score: 0.0584
+2026-04-24 04:33:36,149 - INFO - [pipeline:end_to_end_pipeline] - Prompt length: 1808 chars
+2026-04-24 04:33:36,149 - INFO - [__main__:main] - Pipeline result: top_similarity=0.0584
+2026-04-24 04:33:36,149 - INFO - [__main__:main] - STAGE 8: ADVERSARIAL QUERY EVALUATION
+2026-04-24 04:33:36,149 - INFO - [pipeline:evaluate_adversarial_queries] - 
+================================================================================
+2026-04-24 04:33:36,149 - INFO - [pipeline:evaluate_adversarial_queries] - ADVERSARIAL QUERY EVALUATION
+2026-04-24 04:33:36,149 - INFO - [pipeline:evaluate_adversarial_queries] - ================================================================================
+2026-04-24 04:33:36,150 - INFO - [pipeline:evaluate_adversarial_queries] - Evaluating adversarial query: 'What is the current budget?'
+2026-04-24 04:33:36,150 - INFO - [pipeline:end_to_end_pipeline] - 
+================================================================================
+2026-04-24 04:33:36,150 - INFO - [pipeline:end_to_end_pipeline] - COMPLETE END-TO-END PIPELINE EXECUTION
+2026-04-24 04:33:36,150 - INFO - [pipeline:end_to_end_pipeline] - ================================================================================
+2026-04-24 04:33:36,151 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 1] USER QUERY INPUT
+2026-04-24 04:33:36,151 - INFO - [pipeline:end_to_end_pipeline] - Query: 'What is the current budget?'
+2026-04-24 04:33:36,151 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 2] RETRIEVAL
+2026-04-24 04:33:36,171 - INFO - [pipeline:end_to_end_pipeline] - Retrieved 5 documents
+2026-04-24 04:33:36,171 - INFO - [pipeline:end_to_end_pipeline] - Similarity scores: ['0.1936', '0.1504', '0.1421', '0.1403', '0.1423']
+2026-04-24 04:33:36,172 - INFO - [pipeline:end_to_end_pipeline] - Domain scores: ['1.0000', '1.0000', '1.0000', '1.0000', '0.0000']
+2026-04-24 04:33:36,172 - INFO - [pipeline:end_to_end_pipeline] - Combined scores: ['0.4355', '0.4053', '0.3995', '0.3982', '0.0996']
+2026-04-24 04:33:36,172 - INFO - [pipeline:end_to_end_pipeline] -   Result 1: Similarity=0.1936, Domain=1.0000, Combined=0.4355, Distance=0.8064
+2026-04-24 04:33:36,172 - INFO - [pipeline:end_to_end_pipeline] -   Result 2: Similarity=0.1504, Domain=1.0000, Combined=0.4053, Distance=0.8496
+2026-04-24 04:33:36,173 - INFO - [pipeline:end_to_end_pipeline] -   Result 3: Similarity=0.1421, Domain=1.0000, Combined=0.3995, Distance=0.8579
+2026-04-24 04:33:36,173 - INFO - [pipeline:end_to_end_pipeline] -   Result 4: Similarity=0.1403, Domain=1.0000, Combined=0.3982, Distance=0.8597
+2026-04-24 04:33:36,173 - INFO - [pipeline:end_to_end_pipeline] -   Result 5: Similarity=0.1423, Domain=0.0000, Combined=0.0996, Distance=0.8577
+2026-04-24 04:33:36,173 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 3] CONTEXT SELECTION: 1503 chars selected
+2026-04-24 04:33:36,173 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 4] PROMPT GENERATED: template v2
+2026-04-24 04:33:36,173 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 5] LLM RESPONSE GENERATION
+2026-04-24 04:33:36,174 - INFO - [pipeline:end_to_end_pipeline] - LLM response generated
+2026-04-24 04:33:36,175 - INFO - [pipeline:end_to_end_pipeline] - LLM response: Insufficient information in context.
+2026-04-24 04:33:36,176 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 6] PIPELINE SUMMARY
+2026-04-24 04:33:36,176 - INFO - [pipeline:end_to_end_pipeline] - Top similarity score: 0.1936
+2026-04-24 04:33:36,177 - INFO - [pipeline:end_to_end_pipeline] - Prompt length: 1800 chars
+2026-04-24 04:33:36,177 - INFO - [pipeline:end_to_end_pipeline] - 
+================================================================================
+2026-04-24 04:33:36,178 - INFO - [pipeline:end_to_end_pipeline] - COMPLETE END-TO-END PIPELINE EXECUTION
+2026-04-24 04:33:36,179 - INFO - [pipeline:end_to_end_pipeline] - ================================================================================
+2026-04-24 04:33:36,179 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 1] USER QUERY INPUT
+2026-04-24 04:33:36,179 - INFO - [pipeline:end_to_end_pipeline] - Query: 'What is the current budget?'
+2026-04-24 04:33:36,180 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 2] RETRIEVAL
+2026-04-24 04:33:36,204 - INFO - [pipeline:end_to_end_pipeline] - Retrieved 5 documents
+2026-04-24 04:33:36,205 - INFO - [pipeline:end_to_end_pipeline] - Similarity scores: ['0.1936', '0.1504', '0.1421', '0.1403', '0.1423']
+2026-04-24 04:33:36,205 - INFO - [pipeline:end_to_end_pipeline] - Domain scores: ['1.0000', '1.0000', '1.0000', '1.0000', '0.0000']
+2026-04-24 04:33:36,206 - INFO - [pipeline:end_to_end_pipeline] - Combined scores: ['0.4355', '0.4053', '0.3995', '0.3982', '0.0996']
+2026-04-24 04:33:36,206 - INFO - [pipeline:end_to_end_pipeline] -   Result 1: Similarity=0.1936, Domain=1.0000, Combined=0.4355, Distance=0.8064
+2026-04-24 04:33:36,206 - INFO - [pipeline:end_to_end_pipeline] -   Result 2: Similarity=0.1504, Domain=1.0000, Combined=0.4053, Distance=0.8496
+2026-04-24 04:33:36,206 - INFO - [pipeline:end_to_end_pipeline] -   Result 3: Similarity=0.1421, Domain=1.0000, Combined=0.3995, Distance=0.8579
+2026-04-24 04:33:36,207 - INFO - [pipeline:end_to_end_pipeline] -   Result 4: Similarity=0.1403, Domain=1.0000, Combined=0.3982, Distance=0.8597
+2026-04-24 04:33:36,207 - INFO - [pipeline:end_to_end_pipeline] -   Result 5: Similarity=0.1423, Domain=0.0000, Combined=0.0996, Distance=0.8577
+2026-04-24 04:33:36,207 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 3] CONTEXT SELECTION: 1503 chars selected
+2026-04-24 04:33:36,209 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 4] PROMPT GENERATED: template v2
+2026-04-24 04:33:36,210 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 5] LLM RESPONSE GENERATION
+2026-04-24 04:33:36,211 - INFO - [pipeline:end_to_end_pipeline] - LLM response generated
+2026-04-24 04:33:36,211 - INFO - [pipeline:end_to_end_pipeline] - LLM response: Insufficient information in context.
+2026-04-24 04:33:36,211 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 6] PIPELINE SUMMARY
+2026-04-24 04:33:36,212 - INFO - [pipeline:end_to_end_pipeline] - Top similarity score: 0.1936
+2026-04-24 04:33:36,212 - INFO - [pipeline:end_to_end_pipeline] - Prompt length: 1800 chars
+2026-04-24 04:33:36,212 - INFO - [pipeline:end_to_end_pipeline] - 
+================================================================================
+2026-04-24 04:33:36,212 - INFO - [pipeline:end_to_end_pipeline] - COMPLETE END-TO-END PIPELINE EXECUTION
+2026-04-24 04:33:36,212 - INFO - [pipeline:end_to_end_pipeline] - ================================================================================
+2026-04-24 04:33:36,213 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 1] USER QUERY INPUT
+2026-04-24 04:33:36,213 - INFO - [pipeline:end_to_end_pipeline] - Query: 'What is the current budget?'
+2026-04-24 04:33:36,213 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 2] RETRIEVAL
+2026-04-24 04:33:36,235 - INFO - [pipeline:end_to_end_pipeline] - Retrieved 5 documents
+2026-04-24 04:33:36,235 - INFO - [pipeline:end_to_end_pipeline] - Similarity scores: ['0.1936', '0.1504', '0.1421', '0.1403', '0.1423']
+2026-04-24 04:33:36,236 - INFO - [pipeline:end_to_end_pipeline] - Domain scores: ['1.0000', '1.0000', '1.0000', '1.0000', '0.0000']
+2026-04-24 04:33:36,238 - INFO - [pipeline:end_to_end_pipeline] - Combined scores: ['0.4355', '0.4053', '0.3995', '0.3982', '0.0996']
+2026-04-24 04:33:36,238 - INFO - [pipeline:end_to_end_pipeline] -   Result 1: Similarity=0.1936, Domain=1.0000, Combined=0.4355, Distance=0.8064
+2026-04-24 04:33:36,238 - INFO - [pipeline:end_to_end_pipeline] -   Result 2: Similarity=0.1504, Domain=1.0000, Combined=0.4053, Distance=0.8496
+2026-04-24 04:33:36,238 - INFO - [pipeline:end_to_end_pipeline] -   Result 3: Similarity=0.1421, Domain=1.0000, Combined=0.3995, Distance=0.8579
+2026-04-24 04:33:36,238 - INFO - [pipeline:end_to_end_pipeline] -   Result 4: Similarity=0.1403, Domain=1.0000, Combined=0.3982, Distance=0.8597
+2026-04-24 04:33:36,239 - INFO - [pipeline:end_to_end_pipeline] -   Result 5: Similarity=0.1423, Domain=0.0000, Combined=0.0996, Distance=0.8577
+2026-04-24 04:33:36,239 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 3] CONTEXT SELECTION: 1503 chars selected
+2026-04-24 04:33:36,239 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 4] PROMPT GENERATED: template v2
+2026-04-24 04:33:36,239 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 5] LLM RESPONSE GENERATION
+2026-04-24 04:33:36,239 - INFO - [pipeline:end_to_end_pipeline] - LLM response generated
+2026-04-24 04:33:36,239 - INFO - [pipeline:end_to_end_pipeline] - LLM response: Insufficient information in context.
+2026-04-24 04:33:36,240 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 6] PIPELINE SUMMARY
+2026-04-24 04:33:36,240 - INFO - [pipeline:end_to_end_pipeline] - Top similarity score: 0.1936
+2026-04-24 04:33:36,240 - INFO - [pipeline:end_to_end_pipeline] - Prompt length: 1800 chars
+2026-04-24 04:33:36,240 - INFO - [pipeline:evaluate_adversarial_queries] -   Response: Insufficient information in context.
+2026-04-24 04:33:36,240 - INFO - [pipeline:evaluate_adversarial_queries] -   Accuracy: 1.0
+2026-04-24 04:33:36,240 - INFO - [pipeline:evaluate_adversarial_queries] -   Hallucination: 0.0
+2026-04-24 04:33:36,242 - INFO - [pipeline:evaluate_adversarial_queries] -   Consistency: 1.00
+2026-04-24 04:33:36,242 - INFO - [pipeline:evaluate_adversarial_queries] - Evaluating adversarial query: 'What football-related spending is included in the budget?'
+2026-04-24 04:33:36,243 - INFO - [pipeline:end_to_end_pipeline] - 
+================================================================================
+2026-04-24 04:33:36,243 - INFO - [pipeline:end_to_end_pipeline] - COMPLETE END-TO-END PIPELINE EXECUTION
+2026-04-24 04:33:36,244 - INFO - [pipeline:end_to_end_pipeline] - ================================================================================
+2026-04-24 04:33:36,244 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 1] USER QUERY INPUT
+2026-04-24 04:33:36,245 - INFO - [pipeline:end_to_end_pipeline] - Query: 'What football-related spending is included in the budget?'
+2026-04-24 04:33:36,245 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 2] RETRIEVAL
+2026-04-24 04:33:36,266 - INFO - [pipeline:end_to_end_pipeline] - Retrieved 5 documents
+2026-04-24 04:33:36,266 - INFO - [pipeline:end_to_end_pipeline] - Similarity scores: ['-0.1073', '-0.0594', '-0.0749', '-0.1033', '-0.1352']
+2026-04-24 04:33:36,267 - INFO - [pipeline:end_to_end_pipeline] - Domain scores: ['1.0000', '0.5000', '0.5000', '0.5000', '0.5000']
+2026-04-24 04:33:36,268 - INFO - [pipeline:end_to_end_pipeline] - Combined scores: ['0.2249', '0.1084', '0.0976', '0.0777', '0.0553']
+2026-04-24 04:33:36,269 - INFO - [pipeline:end_to_end_pipeline] -   Result 1: Similarity=-0.1073, Domain=1.0000, Combined=0.2249, Distance=1.1073
+2026-04-24 04:33:36,269 - INFO - [pipeline:end_to_end_pipeline] -   Result 2: Similarity=-0.0594, Domain=0.5000, Combined=0.1084, Distance=1.0594
+2026-04-24 04:33:36,270 - INFO - [pipeline:end_to_end_pipeline] -   Result 3: Similarity=-0.0749, Domain=0.5000, Combined=0.0976, Distance=1.0749
+2026-04-24 04:33:36,270 - INFO - [pipeline:end_to_end_pipeline] -   Result 4: Similarity=-0.1033, Domain=0.5000, Combined=0.0777, Distance=1.1033
+2026-04-24 04:33:36,271 - INFO - [pipeline:end_to_end_pipeline] -   Result 5: Similarity=-0.1352, Domain=0.5000, Combined=0.0553, Distance=1.1352
+2026-04-24 04:33:36,271 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 3] CONTEXT SELECTION: 1503 chars selected
+2026-04-24 04:33:36,271 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 4] PROMPT GENERATED: template v2
+2026-04-24 04:33:36,271 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 5] LLM RESPONSE GENERATION
+2026-04-24 04:33:36,271 - INFO - [pipeline:end_to_end_pipeline] - LLM response generated
+2026-04-24 04:33:36,271 - INFO - [pipeline:end_to_end_pipeline] - LLM response: Government is committed to aligning expenditures with fiscal realities.
+2026-04-24 04:33:36,272 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 6] PIPELINE SUMMARY
+2026-04-24 04:33:36,272 - INFO - [pipeline:end_to_end_pipeline] - Top similarity score: -0.1073
+2026-04-24 04:33:36,272 - INFO - [pipeline:end_to_end_pipeline] - Prompt length: 1830 chars
+2026-04-24 04:33:36,272 - INFO - [pipeline:end_to_end_pipeline] - 
+================================================================================
+2026-04-24 04:33:36,272 - INFO - [pipeline:end_to_end_pipeline] - COMPLETE END-TO-END PIPELINE EXECUTION
+2026-04-24 04:33:36,273 - INFO - [pipeline:end_to_end_pipeline] - ================================================================================
+2026-04-24 04:33:36,273 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 1] USER QUERY INPUT
+2026-04-24 04:33:36,273 - INFO - [pipeline:end_to_end_pipeline] - Query: 'What football-related spending is included in the budget?'
+2026-04-24 04:33:36,273 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 2] RETRIEVAL
+2026-04-24 04:33:36,295 - INFO - [pipeline:end_to_end_pipeline] - Retrieved 5 documents
+2026-04-24 04:33:36,295 - INFO - [pipeline:end_to_end_pipeline] - Similarity scores: ['-0.1073', '-0.0594', '-0.0749', '-0.1033', '-0.1352']
+2026-04-24 04:33:36,295 - INFO - [pipeline:end_to_end_pipeline] - Domain scores: ['1.0000', '0.5000', '0.5000', '0.5000', '0.5000']
+2026-04-24 04:33:36,296 - INFO - [pipeline:end_to_end_pipeline] - Combined scores: ['0.2249', '0.1084', '0.0976', '0.0777', '0.0553']
+2026-04-24 04:33:36,296 - INFO - [pipeline:end_to_end_pipeline] -   Result 1: Similarity=-0.1073, Domain=1.0000, Combined=0.2249, Distance=1.1073
+2026-04-24 04:33:36,296 - INFO - [pipeline:end_to_end_pipeline] -   Result 2: Similarity=-0.0594, Domain=0.5000, Combined=0.1084, Distance=1.0594
+2026-04-24 04:33:36,296 - INFO - [pipeline:end_to_end_pipeline] -   Result 3: Similarity=-0.0749, Domain=0.5000, Combined=0.0976, Distance=1.0749
+2026-04-24 04:33:36,297 - INFO - [pipeline:end_to_end_pipeline] -   Result 4: Similarity=-0.1033, Domain=0.5000, Combined=0.0777, Distance=1.1033
+2026-04-24 04:33:36,297 - INFO - [pipeline:end_to_end_pipeline] -   Result 5: Similarity=-0.1352, Domain=0.5000, Combined=0.0553, Distance=1.1352
+2026-04-24 04:33:36,297 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 3] CONTEXT SELECTION: 1503 chars selected
+2026-04-24 04:33:36,297 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 4] PROMPT GENERATED: template v2
+2026-04-24 04:33:36,297 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 5] LLM RESPONSE GENERATION
+2026-04-24 04:33:36,297 - INFO - [pipeline:end_to_end_pipeline] - LLM response generated
+2026-04-24 04:33:36,297 - INFO - [pipeline:end_to_end_pipeline] - LLM response: Government is committed to aligning expenditures with fiscal realities.
+2026-04-24 04:33:36,298 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 6] PIPELINE SUMMARY
+2026-04-24 04:33:36,298 - INFO - [pipeline:end_to_end_pipeline] - Top similarity score: -0.1073
+2026-04-24 04:33:36,298 - INFO - [pipeline:end_to_end_pipeline] - Prompt length: 1830 chars
+2026-04-24 04:33:36,298 - INFO - [pipeline:end_to_end_pipeline] - 
+================================================================================
+2026-04-24 04:33:36,298 - INFO - [pipeline:end_to_end_pipeline] - COMPLETE END-TO-END PIPELINE EXECUTION
+2026-04-24 04:33:36,298 - INFO - [pipeline:end_to_end_pipeline] - ================================================================================
+2026-04-24 04:33:36,299 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 1] USER QUERY INPUT
+2026-04-24 04:33:36,299 - INFO - [pipeline:end_to_end_pipeline] - Query: 'What football-related spending is included in the budget?'
+2026-04-24 04:33:36,299 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 2] RETRIEVAL
+2026-04-24 04:33:36,323 - INFO - [pipeline:end_to_end_pipeline] - Retrieved 5 documents
+2026-04-24 04:33:36,323 - INFO - [pipeline:end_to_end_pipeline] - Similarity scores: ['-0.1073', '-0.0594', '-0.0749', '-0.1033', '-0.1352']
+2026-04-24 04:33:36,323 - INFO - [pipeline:end_to_end_pipeline] - Domain scores: ['1.0000', '0.5000', '0.5000', '0.5000', '0.5000']
+2026-04-24 04:33:36,324 - INFO - [pipeline:end_to_end_pipeline] - Combined scores: ['0.2249', '0.1084', '0.0976', '0.0777', '0.0553']
+2026-04-24 04:33:36,324 - INFO - [pipeline:end_to_end_pipeline] -   Result 1: Similarity=-0.1073, Domain=1.0000, Combined=0.2249, Distance=1.1073
+2026-04-24 04:33:36,324 - INFO - [pipeline:end_to_end_pipeline] -   Result 2: Similarity=-0.0594, Domain=0.5000, Combined=0.1084, Distance=1.0594
+2026-04-24 04:33:36,325 - INFO - [pipeline:end_to_end_pipeline] -   Result 3: Similarity=-0.0749, Domain=0.5000, Combined=0.0976, Distance=1.0749
+2026-04-24 04:33:36,325 - INFO - [pipeline:end_to_end_pipeline] -   Result 4: Similarity=-0.1033, Domain=0.5000, Combined=0.0777, Distance=1.1033
+2026-04-24 04:33:36,326 - INFO - [pipeline:end_to_end_pipeline] -   Result 5: Similarity=-0.1352, Domain=0.5000, Combined=0.0553, Distance=1.1352
+2026-04-24 04:33:36,326 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 3] CONTEXT SELECTION: 1503 chars selected
+2026-04-24 04:33:36,326 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 4] PROMPT GENERATED: template v2
+2026-04-24 04:33:36,327 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 5] LLM RESPONSE GENERATION
+2026-04-24 04:33:36,327 - INFO - [pipeline:end_to_end_pipeline] - LLM response generated
+2026-04-24 04:33:36,327 - INFO - [pipeline:end_to_end_pipeline] - LLM response: Government is committed to aligning expenditures with fiscal realities.
+2026-04-24 04:33:36,327 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 6] PIPELINE SUMMARY
+2026-04-24 04:33:36,327 - INFO - [pipeline:end_to_end_pipeline] - Top similarity score: -0.1073
+2026-04-24 04:33:36,328 - INFO - [pipeline:end_to_end_pipeline] - Prompt length: 1830 chars
+2026-04-24 04:33:36,328 - INFO - [pipeline:evaluate_adversarial_queries] -   Response: Government is committed to aligning expenditures with fiscal realities.
+2026-04-24 04:33:36,328 - INFO - [pipeline:evaluate_adversarial_queries] -   Accuracy: 0.0
+2026-04-24 04:33:36,328 - INFO - [pipeline:evaluate_adversarial_queries] -   Hallucination: 1.0
+2026-04-24 04:33:36,328 - INFO - [pipeline:evaluate_adversarial_queries] -   Consistency: 1.00
+2026-04-24 04:33:36,329 - INFO - [__main__:main] - Adversarial evaluation result:
+2026-04-24 04:33:36,329 - INFO - [__main__:main] -   Query: What is the current budget?
+2026-04-24 04:33:36,329 - INFO - [__main__:main] -   Expected: Insufficient information in context.
+2026-04-24 04:33:36,329 - INFO - [__main__:main] -   Response: Insufficient information in context.
+2026-04-24 04:33:36,329 - INFO - [__main__:main] -   Accuracy: 1.0
+2026-04-24 04:33:36,330 - INFO - [__main__:main] -   Hallucination: 0.0
+2026-04-24 04:33:36,330 - INFO - [__main__:main] -   Consistency: 1.00
+2026-04-24 04:33:36,330 - INFO - [__main__:main] - Adversarial evaluation result:
+2026-04-24 04:33:36,330 - INFO - [__main__:main] -   Query: What football-related spending is included in the budget?
+2026-04-24 04:33:36,330 - INFO - [__main__:main] -   Expected: No relevant information found in context.
+2026-04-24 04:33:36,330 - INFO - [__main__:main] -   Response: Government is committed to aligning expenditures with fiscal realities.
+2026-04-24 04:33:36,330 - INFO - [__main__:main] -   Accuracy: 0.0
+2026-04-24 04:33:36,331 - INFO - [__main__:main] -   Hallucination: 1.0
+2026-04-24 04:33:36,331 - INFO - [__main__:main] -   Consistency: 1.00
+2026-04-24 04:33:36,331 - INFO - [__main__:main] - RAG PIPELINE EXECUTION COMPLETED
+2026-04-24 04:33:36,331 - INFO - [__main__:main] - Log file: ./logs\rag_pipeline_20260424_043229.log

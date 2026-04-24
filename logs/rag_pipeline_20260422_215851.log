@@ -1,0 +1,243 @@
+2026-04-22 21:58:51,223 - INFO - [<module>] - ================================================================================
+2026-04-22 21:58:51,223 - INFO - [<module>] - RAG PIPELINE EXECUTION STARTED
+2026-04-22 21:58:51,223 - INFO - [<module>] - ================================================================================
+2026-04-22 21:58:51,224 - INFO - [<module>] - 
+================================================================================
+2026-04-22 21:58:51,224 - INFO - [<module>] - STAGE 1: DATA CLEANING
+2026-04-22 21:58:51,224 - INFO - [<module>] - ================================================================================
+2026-04-22 21:58:51,225 - INFO - [clean_csv] - Starting CSV cleaning: Ghana_Election_Result.csv
+2026-04-22 21:58:51,236 - INFO - [clean_csv] - CSV cleaning completed: 615 rows remaining (0 duplicates removed)
+2026-04-22 21:58:51,237 - INFO - [<module>] - Cleaned CSV: 615 rows, 8 columns
+2026-04-22 21:58:51,441 - INFO - [extract_clean_pdf] - Starting PDF extraction: 2025-Budget-Statement-and-Economic-Policy_v4.pdf
+2026-04-22 21:59:11,306 - INFO - [extract_clean_pdf] - PDF extraction completed: 702077 characters extracted
+2026-04-22 21:59:11,307 - INFO - [<module>] - Extracted PDF text length: 702077 characters
+2026-04-22 21:59:11,307 - INFO - [<module>] - 
+================================================================================
+2026-04-22 21:59:11,307 - INFO - [<module>] - STAGE 2: CHUNKING STRATEGIES
+2026-04-22 21:59:11,307 - INFO - [<module>] - ================================================================================
+2026-04-22 21:59:11,309 - INFO - [chunk_fixed_size] - Fixed-size chunking completed: 1561 chunks, avg length: 499.73 chars
+2026-04-22 21:59:11,320 - INFO - [chunk_by_sentences] - Sentence-based chunking completed: 2 chunks, avg length: 371968.50 chars
+2026-04-22 21:59:11,320 - INFO - [<module>] - 
+================================================================================
+2026-04-22 21:59:11,321 - INFO - [<module>] - STAGE 3: EMBEDDING PIPELINE
+2026-04-22 21:59:11,321 - INFO - [<module>] - ================================================================================
+2026-04-22 21:59:11,321 - INFO - [create_embeddings] - Starting embedding pipeline: model=all-MiniLM-L6-v2, chunks=2
+2026-04-22 21:59:11,322 - INFO - [__init__] - No device provided, using cpu
+2026-04-22 21:59:12,419 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:12,522 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:12,720 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:12,721 - WARNING - [_warn_on_warning_headers] - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-04-22 21:59:12,826 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:12,830 - INFO - [_load_modules] - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-04-22 21:59:13,020 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:13,124 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:13,315 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:13,420 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-04-22 21:59:13,614 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:13,718 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:13,911 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:14,079 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:14,270 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-04-22 21:59:14,463 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:14,565 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:14,886 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-04-22 21:59:15,097 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-22 21:59:15,291 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-22 21:59:15,489 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-22 21:59:15,681 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:15,785 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:15,978 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:16,079 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:16,326 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:16,430 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:16,622 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:16,725 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:16,927 - INFO - [_send_single_request] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-22 21:59:17,121 - INFO - [_send_single_request] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-22 21:59:17,450 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:17,554 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:17,745 - INFO - [_send_single_request] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-04-22 21:59:18,641 - INFO - [create_embeddings] - Embeddings created: shape=(2, 384), dtype=float32
+2026-04-22 21:59:18,642 - INFO - [<module>] - 
+================================================================================
+2026-04-22 21:59:18,642 - INFO - [<module>] - STAGE 4: VECTOR STORAGE
+2026-04-22 21:59:18,642 - INFO - [<module>] - ================================================================================
+2026-04-22 21:59:18,643 - INFO - [store_in_chroma] - Starting Chroma storage: collection=budget_chunks, chunks=2
+2026-04-22 21:59:18,899 - INFO - [store_in_chroma] - Chroma storage completed: 2 chunks stored in 'budget_chunks'
+2026-04-22 21:59:18,899 - INFO - [<module>] - 
+================================================================================
+2026-04-22 21:59:18,899 - INFO - [<module>] - STAGE 5: RETRIEVAL TESTING
+2026-04-22 21:59:18,900 - INFO - [<module>] - ================================================================================
+2026-04-22 21:59:18,900 - INFO - [<module>] - 
+Processing query: 'economic growth projections'
+2026-04-22 21:59:18,960 - INFO - [<module>] - Top-k retrieval - Similarities: ['0.479', '0.220', '0.219']
+2026-04-22 21:59:19,637 - INFO - [<module>] - Hybrid search - Distances: ['0.521', '0.780', '0.781']
+2026-04-22 21:59:19,637 - INFO - [<module>] - 
+Processing query: 'government budget allocation'
+2026-04-22 21:59:19,678 - INFO - [<module>] - Top-k retrieval - Similarities: ['0.171', '0.154', '0.150']
+2026-04-22 21:59:20,178 - INFO - [<module>] - Hybrid search - Distances: ['0.829', '0.846', '0.850']
+2026-04-22 21:59:20,179 - INFO - [<module>] - 
+Processing query: 'fiscal policy measures'
+2026-04-22 21:59:20,204 - INFO - [<module>] - Top-k retrieval - Similarities: ['0.395', '0.336', '0.319']
+2026-04-22 21:59:20,714 - INFO - [<module>] - Hybrid search - Distances: ['0.605', '0.664', '0.681']
+2026-04-22 21:59:20,715 - INFO - [<module>] - 
+Processing query: 'unrelated query like sports results'
+2026-04-22 21:59:20,748 - INFO - [<module>] - Top-k retrieval - Similarities: ['-0.434', '-0.449', '-0.482']
+2026-04-22 21:59:21,269 - INFO - [<module>] - Hybrid search - Distances: ['1.434', '1.449', '1.482']
+2026-04-22 21:59:21,269 - INFO - [<module>] - 
+================================================================================
+2026-04-22 21:59:21,270 - INFO - [<module>] - STAGE 6: FAILURE CASE ANALYSIS & FIX
+2026-04-22 21:59:21,270 - INFO - [<module>] - ================================================================================
+2026-04-22 21:59:21,270 - INFO - [<module>] - Identified failure case: Out-of-domain queries (e.g., sports results)
+2026-04-22 21:59:21,270 - INFO - [<module>] - Proposed fix: Increase chunk overlap from 1 to 2 sentences
+2026-04-22 21:59:21,299 - INFO - [chunk_by_sentences] - Sentence-based chunking completed: 2 chunks, avg length: 372471.00 chars
+2026-04-22 21:59:21,299 - INFO - [create_embeddings] - Starting embedding pipeline: model=all-MiniLM-L6-v2, chunks=2
+2026-04-22 21:59:21,302 - INFO - [__init__] - No device provided, using cpu
+2026-04-22 21:59:21,495 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:21,614 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:21,804 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:21,950 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:21,952 - INFO - [_load_modules] - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-04-22 21:59:22,145 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:22,249 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:22,506 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:22,610 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-04-22 21:59:22,807 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:22,912 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:23,105 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:23,209 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:23,413 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-04-22 21:59:23,624 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:23,741 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:24,005 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-04-22 21:59:24,204 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-22 21:59:24,409 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-22 21:59:24,604 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-22 21:59:24,792 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:24,897 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:25,094 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:25,199 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:25,396 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:25,537 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:25,794 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:25,900 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:26,118 - INFO - [_send_single_request] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-22 21:59:26,310 - INFO - [_send_single_request] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-22 21:59:26,552 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 21:59:26,654 - INFO - [_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-04-22 21:59:26,859 - INFO - [_send_single_request] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-04-22 21:59:27,631 - INFO - [create_embeddings] - Embeddings created: shape=(2, 384), dtype=float32
+2026-04-22 21:59:27,632 - INFO - [store_in_chroma] - Starting Chroma storage: collection=budget_chunks_fixed, chunks=2
+2026-04-22 21:59:27,722 - INFO - [store_in_chroma] - Chroma storage completed: 2 chunks stored in 'budget_chunks_fixed'
+2026-04-22 21:59:27,722 - INFO - [<module>] - 
+Re-testing with fixed chunking:
+2026-04-22 21:59:27,782 - INFO - [<module>] - Query: 'economic growth projections' - Top similarity: 0.479
+2026-04-22 21:59:27,810 - INFO - [<module>] - Query: 'unrelated query like sports results' - Top similarity: -0.496
+2026-04-22 21:59:27,812 - INFO - [<module>] - 
+================================================================================
+2026-04-22 21:59:27,812 - INFO - [<module>] - STAGE 7: COMPLETE END-TO-END PIPELINE DEMONSTRATION
+2026-04-22 21:59:27,813 - INFO - [<module>] - ================================================================================
+2026-04-22 21:59:27,813 - INFO - [<module>] - Running full pipeline for multiple queries with all 3 prompt versions...
+2026-04-22 21:59:27,813 - INFO - [<module>] - 
+================================================================================
+2026-04-22 21:59:27,813 - INFO - [<module>] - EXECUTING END-TO-END PIPELINE FOR: What are the economic growth projections?
+2026-04-22 21:59:27,813 - INFO - [<module>] - ================================================================================
+2026-04-22 21:59:27,813 - INFO - [end_to_end_pipeline] - 
+================================================================================
+2026-04-22 21:59:27,814 - INFO - [end_to_end_pipeline] - COMPLETE END-TO-END PIPELINE EXECUTION
+2026-04-22 21:59:27,814 - INFO - [end_to_end_pipeline] - ================================================================================
+2026-04-22 21:59:27,814 - INFO - [end_to_end_pipeline] - 
+[STAGE 1] USER QUERY INPUT
+2026-04-22 21:59:27,814 - INFO - [end_to_end_pipeline] - Query: 'What are the economic growth projections?'
+2026-04-22 21:59:27,815 - INFO - [end_to_end_pipeline] - 
+[STAGE 2] RETRIEVAL
+2026-04-22 21:59:27,815 - INFO - [end_to_end_pipeline] - Starting retrieval with semantic embeddings...
+2026-04-22 21:59:27,848 - INFO - [end_to_end_pipeline] - Retrieved 5 documents
+2026-04-22 21:59:27,848 - INFO - [end_to_end_pipeline] -   Result 1: Similarity=0.4334, Distance=0.5666
+2026-04-22 21:59:27,849 - INFO - [end_to_end_pipeline] -   Result 2: Similarity=0.2531, Distance=0.7469
+2026-04-22 21:59:27,849 - INFO - [end_to_end_pipeline] -   Result 3: Similarity=0.2330, Distance=0.7670
+2026-04-22 21:59:27,850 - INFO - [end_to_end_pipeline] -   Result 4: Similarity=0.2140, Distance=0.7860
+2026-04-22 21:59:27,851 - INFO - [end_to_end_pipeline] -   Result 5: Similarity=0.1982, Distance=0.8018
+2026-04-22 21:59:27,855 - INFO - [end_to_end_pipeline] - 
+[STAGE 3] CONTEXT SELECTION & WINDOW MANAGEMENT
+2026-04-22 21:59:27,855 - INFO - [end_to_end_pipeline] - Context window created: 1503 characters (max 1500)
+2026-04-22 21:59:27,864 - INFO - [end_to_end_pipeline] - 
+[STAGE 4] PROMPT GENERATION - Version V2
+2026-04-22 21:59:27,869 - INFO - [end_to_end_pipeline] - Prompt generated using template V2
+2026-04-22 21:59:27,871 - INFO - [end_to_end_pipeline] - Prompt length: 1814 characters
+2026-04-22 21:59:27,883 - INFO - [end_to_end_pipeline] - 
+[STAGE 5] LLM RESPONSE GENERATION
+2026-04-22 21:59:27,883 - INFO - [end_to_end_pipeline] - Sending prompt to LLM (simulated)...
+2026-04-22 21:59:27,884 - INFO - [end_to_end_pipeline] - LLM response generated: 13 characters
+2026-04-22 21:59:27,885 - INFO - [end_to_end_pipeline] - Response: I don't know.
+2026-04-22 21:59:27,887 - INFO - [end_to_end_pipeline] - 
+[STAGE 6] PIPELINE SUMMARY
+2026-04-22 21:59:27,888 - INFO - [end_to_end_pipeline] - Top similarity score: 0.4334
+2026-04-22 21:59:27,888 - INFO - [end_to_end_pipeline] - Number of documents retrieved: 5
+2026-04-22 21:59:27,889 - INFO - [end_to_end_pipeline] - Context window size: 1503 chars
+2026-04-22 21:59:27,889 - INFO - [end_to_end_pipeline] - Prompt template used: v2
+2026-04-22 21:59:27,890 - INFO - [end_to_end_pipeline] - Response generated successfully
+2026-04-22 21:59:27,895 - INFO - [<module>] - Pipeline completed successfully
+2026-04-22 21:59:27,896 - INFO - [<module>] -   - Documents Retrieved: 5
+2026-04-22 21:59:27,897 - INFO - [<module>] -   - Top Similarity Score: 0.4334
+2026-04-22 21:59:27,897 - INFO - [<module>] -   - Context Length: 1503 chars
+2026-04-22 21:59:27,897 - INFO - [<module>] -   - Prompt Length: 1814 chars
+2026-04-22 21:59:27,899 - INFO - [<module>] -   - Response: I don't know.
+2026-04-22 21:59:27,903 - INFO - [<module>] - 
+================================================================================
+2026-04-22 21:59:27,905 - INFO - [<module>] - EXECUTING END-TO-END PIPELINE FOR: How is government budget allocated?
+2026-04-22 21:59:27,905 - INFO - [<module>] - ================================================================================
+2026-04-22 21:59:27,906 - INFO - [end_to_end_pipeline] - 
+================================================================================
+2026-04-22 21:59:27,906 - INFO - [end_to_end_pipeline] - COMPLETE END-TO-END PIPELINE EXECUTION
+2026-04-22 21:59:27,906 - INFO - [end_to_end_pipeline] - ================================================================================
+2026-04-22 21:59:27,913 - INFO - [end_to_end_pipeline] - 
+[STAGE 1] USER QUERY INPUT
+2026-04-22 21:59:27,917 - INFO - [end_to_end_pipeline] - Query: 'How is government budget allocated?'
+2026-04-22 21:59:27,918 - INFO - [end_to_end_pipeline] - 
+[STAGE 2] RETRIEVAL
+2026-04-22 21:59:27,919 - INFO - [end_to_end_pipeline] - Starting retrieval with semantic embeddings...
+2026-04-22 21:59:27,950 - INFO - [end_to_end_pipeline] - Retrieved 5 documents
+2026-04-22 21:59:27,950 - INFO - [end_to_end_pipeline] -   Result 1: Similarity=0.0584, Distance=0.9416
+2026-04-22 21:59:27,951 - INFO - [end_to_end_pipeline] -   Result 2: Similarity=0.0545, Distance=0.9455
+2026-04-22 21:59:27,951 - INFO - [end_to_end_pipeline] -   Result 3: Similarity=0.0492, Distance=0.9508
+2026-04-22 21:59:27,951 - INFO - [end_to_end_pipeline] -   Result 4: Similarity=0.0480, Distance=0.9520
+2026-04-22 21:59:27,952 - INFO - [end_to_end_pipeline] -   Result 5: Similarity=0.0235, Distance=0.9765
+2026-04-22 21:59:27,962 - INFO - [end_to_end_pipeline] - 
+[STAGE 3] CONTEXT SELECTION & WINDOW MANAGEMENT
+2026-04-22 21:59:27,963 - INFO - [end_to_end_pipeline] - Context window created: 1503 characters (max 1500)
+2026-04-22 21:59:27,964 - INFO - [end_to_end_pipeline] - 
+[STAGE 4] PROMPT GENERATION - Version V2
+2026-04-22 21:59:27,965 - INFO - [end_to_end_pipeline] - Prompt generated using template V2
+2026-04-22 21:59:27,965 - INFO - [end_to_end_pipeline] - Prompt length: 1808 characters
+2026-04-22 21:59:27,972 - INFO - [end_to_end_pipeline] - 
+[STAGE 5] LLM RESPONSE GENERATION
+2026-04-22 21:59:27,973 - INFO - [end_to_end_pipeline] - Sending prompt to LLM (simulated)...
+2026-04-22 21:59:27,973 - INFO - [end_to_end_pipeline] - LLM response generated: 13 characters
+2026-04-22 21:59:27,973 - INFO - [end_to_end_pipeline] - Response: I don't know.
+2026-04-22 21:59:27,974 - INFO - [end_to_end_pipeline] - 
+[STAGE 6] PIPELINE SUMMARY
+2026-04-22 21:59:27,974 - INFO - [end_to_end_pipeline] - Top similarity score: 0.0584
+2026-04-22 21:59:27,974 - INFO - [end_to_end_pipeline] - Number of documents retrieved: 5
+2026-04-22 21:59:27,974 - INFO - [end_to_end_pipeline] - Context window size: 1503 chars
+2026-04-22 21:59:27,976 - INFO - [end_to_end_pipeline] - Prompt template used: v2
+2026-04-22 21:59:27,977 - INFO - [end_to_end_pipeline] - Response generated successfully
+2026-04-22 21:59:27,978 - INFO - [<module>] - Pipeline completed successfully
+2026-04-22 21:59:27,979 - INFO - [<module>] -   - Documents Retrieved: 5
+2026-04-22 21:59:27,979 - INFO - [<module>] -   - Top Similarity Score: 0.0584
+2026-04-22 21:59:27,979 - INFO - [<module>] -   - Context Length: 1503 chars
+2026-04-22 21:59:27,980 - INFO - [<module>] -   - Prompt Length: 1808 chars
+2026-04-22 21:59:27,980 - INFO - [<module>] -   - Response: I don't know.
+2026-04-22 21:59:27,981 - INFO - [<module>] - 
+================================================================================
+2026-04-22 21:59:27,981 - INFO - [<module>] - PIPELINE EXECUTION SUMMARY
+2026-04-22 21:59:27,981 - INFO - [<module>] - ================================================================================
+2026-04-22 21:59:27,981 - INFO - [<module>] - Total queries processed: 2
+2026-04-22 21:59:27,982 - INFO - [<module>] - Average top similarity score: 0.2459
+2026-04-22 21:59:27,982 - INFO - [<module>] - Average context length: 1503 chars
+2026-04-22 21:59:27,982 - INFO - [<module>] - Pipeline components verified:
+2026-04-22 21:59:28,074 - INFO - [<module>] - 
+Log file location: ./logs\rag_pipeline_20260422_215851.log
+2026-04-22 21:59:28,077 - INFO - [<module>] - ================================================================================
+2026-04-22 21:59:28,078 - INFO - [<module>] - RAG PIPELINE EXECUTION COMPLETED SUCCESSFULLY
+2026-04-22 21:59:28,078 - INFO - [<module>] - ================================================================================

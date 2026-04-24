@@ -1,0 +1,101 @@
+2026-04-24 04:48:33,860 - INFO - [pipeline:configure_logging] - Logging configured: ./logs\rag_pipeline_20260424_044833.log
+2026-04-24 04:48:33,861 - INFO - [__main__:main] - RAG PIPELINE EXECUTION STARTED
+2026-04-24 04:48:33,861 - INFO - [__main__:main] - STAGE 1: DATA CLEANING
+2026-04-24 04:48:33,861 - INFO - [data_processing:clean_csv] - Starting CSV cleaning: Ghana_Election_Result.csv
+2026-04-24 04:48:33,870 - INFO - [data_processing:clean_csv] - CSV cleaning completed: 615 rows remaining (0 duplicates removed)
+2026-04-24 04:48:33,870 - INFO - [__main__:main] - Cleaned CSV: 615 rows, 8 columns
+2026-04-24 04:48:33,875 - INFO - [__main__:main] - STAGE 2: PDF EXTRACTION
+2026-04-24 04:48:33,875 - INFO - [data_processing:extract_clean_pdf] - Starting PDF extraction: 2025-Budget-Statement-and-Economic-Policy_v4.pdf
+2026-04-24 04:48:50,417 - INFO - [data_processing:extract_clean_pdf] - PDF extraction completed: 702077 characters extracted
+2026-04-24 04:48:50,417 - INFO - [__main__:main] - Extracted PDF text length: 702077 characters
+2026-04-24 04:48:50,418 - INFO - [__main__:main] - STAGE 3: CHUNKING
+2026-04-24 04:48:50,419 - INFO - [data_processing:chunk_fixed_size] - Fixed-size chunking completed: 1561 chunks, avg length: 499.73 chars
+2026-04-24 04:48:50,430 - INFO - [data_processing:chunk_by_sentences] - Sentence-based chunking completed: 937 chunks, avg length: 1100.61 chars
+2026-04-24 04:48:50,436 - INFO - [data_processing:chunk_by_paragraphs] - Paragraph-based chunking completed: 2678 chunks, avg length: 257.05 chars
+2026-04-24 04:48:50,463 - INFO - [data_processing:filter_chunks] - Filtered chunks: 5160 remain from 5162
+2026-04-24 04:48:50,464 - INFO - [__main__:main] - Using 5160 filtered chunks for embedding
+2026-04-24 04:48:50,464 - INFO - [__main__:main] - STAGE 4: EMBEDDING CREATION
+2026-04-24 04:48:50,465 - INFO - [embeddings:create_embeddings] - Starting embedding pipeline: model=all-MiniLM-L6-v2, chunks=5160
+2026-04-24 04:48:50,466 - INFO - [sentence_transformers.base.model:__init__] - No device provided, using cpu
+2026-04-24 04:48:51,538 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:48:51,539 - WARNING - [huggingface_hub.utils._http:_warn_on_warning_headers] - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-04-24 04:48:51,654 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-24 04:48:51,857 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:48:51,972 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-24 04:48:51,974 - INFO - [sentence_transformers.base.model:_load_modules] - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-04-24 04:48:52,177 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:48:52,300 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-04-24 04:48:52,514 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:48:52,629 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-04-24 04:48:52,828 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:48:52,943 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-04-24 04:48:53,149 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:48:53,265 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-04-24 04:48:53,473 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-04-24 04:48:53,677 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:48:53,792 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-24 04:48:54,115 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-04-24 04:48:54,327 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-24 04:48:54,541 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-24 04:48:54,755 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-04-24 04:48:54,960 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:48:55,076 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-24 04:48:55,282 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:48:55,397 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-24 04:48:55,602 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:48:55,718 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-04-24 04:48:55,921 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:48:56,037 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-24 04:48:56,243 - INFO - [httpx:_send_single_request] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-24 04:48:56,452 - INFO - [httpx:_send_single_request] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-24 04:48:56,697 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-24 04:48:56,814 - INFO - [httpx:_send_single_request] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-04-24 04:48:57,020 - INFO - [httpx:_send_single_request] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-04-24 04:52:17,739 - INFO - [embeddings:create_embeddings] - Embeddings created: shape=(5160, 384), dtype=float32
+2026-04-24 04:52:17,740 - INFO - [__main__:main] - STAGE 5: VECTOR STORAGE
+2026-04-24 04:52:17,740 - INFO - [embeddings:store_in_chroma] - Starting Chroma storage: collection=budget_chunks, chunks=5160
+2026-04-24 04:52:18,882 - INFO - [embeddings:store_in_chroma] - Chroma storage completed: 5160 chunks stored in 'budget_chunks'
+2026-04-24 04:52:18,883 - INFO - [__main__:main] - STAGE 6: RETRIEVAL TESTING
+2026-04-24 04:52:18,883 - INFO - [__main__:main] - Retrieving for query: 'economic growth projections'
+2026-04-24 04:52:18,915 - INFO - [__main__:main] - Top combined scores: ['0.586', '0.573', '0.419']
+2026-04-24 04:52:18,916 - INFO - [__main__:main] - Top similarity scores: ['0.505', '0.479', '0.305']
+2026-04-24 04:52:18,916 - INFO - [__main__:main] - Top domain scores: ['0.667', '0.667', '0.667']
+2026-04-24 04:52:18,916 - INFO - [__main__:main] - Top keyword scores: ['0.667', '0.667', '0.333']
+2026-04-24 04:52:19,634 - INFO - [__main__:main] - Hybrid distances: ['0.495', '0.521', '0.695']
+2026-04-24 04:52:19,634 - INFO - [__main__:main] - Retrieving for query: 'government budget allocation'
+2026-04-24 04:52:19,655 - INFO - [__main__:main] - Top combined scores: ['0.643', '0.592', '0.519']
+2026-04-24 04:52:19,656 - INFO - [__main__:main] - Top similarity scores: ['0.286', '0.185', '0.171']
+2026-04-24 04:52:19,656 - INFO - [__main__:main] - Top domain scores: ['1.000', '1.000', '1.000']
+2026-04-24 04:52:19,656 - INFO - [__main__:main] - Top keyword scores: ['1.000', '1.000', '0.667']
+2026-04-24 04:52:20,054 - INFO - [__main__:main] - Hybrid distances: ['0.714', '0.815', '0.829']
+2026-04-24 04:52:20,054 - INFO - [__main__:main] - Retrieving for query: 'fiscal policy measures'
+2026-04-24 04:52:20,070 - INFO - [__main__:main] - Top combined scores: ['0.698', '0.612', '0.601']
+2026-04-24 04:52:20,071 - INFO - [__main__:main] - Top similarity scores: ['0.395', '0.358', '0.336']
+2026-04-24 04:52:20,071 - INFO - [__main__:main] - Top domain scores: ['1.000', '1.000', '1.000']
+2026-04-24 04:52:20,072 - INFO - [__main__:main] - Top keyword scores: ['1.000', '0.667', '0.667']
+2026-04-24 04:52:20,468 - INFO - [__main__:main] - Hybrid distances: ['0.605', '0.642', '0.664']
+2026-04-24 04:52:20,468 - INFO - [__main__:main] - Retrieving for query: 'unrelated query like sports results'
+2026-04-24 04:52:20,488 - INFO - [__main__:main] - Top combined scores: ['0.083', '0.079', '-0.027']
+2026-04-24 04:52:20,489 - INFO - [__main__:main] - Top similarity scores: ['-0.065', '-0.072', '-0.133']
+2026-04-24 04:52:20,490 - INFO - [__main__:main] - Top domain scores: ['0.250', '0.250', '0.000']
+2026-04-24 04:52:20,491 - INFO - [__main__:main] - Top keyword scores: ['0.200', '0.200', '0.200']
+2026-04-24 04:52:20,901 - INFO - [__main__:main] - Hybrid distances: ['1.065', '1.072', '1.133']
+2026-04-24 04:52:20,901 - INFO - [__main__:main] - STAGE 7: COMPLETE PIPELINE DEMONSTRATION
+2026-04-24 04:52:20,902 - INFO - [pipeline:end_to_end_pipeline] - 
+================================================================================
+2026-04-24 04:52:20,902 - INFO - [pipeline:end_to_end_pipeline] - COMPLETE END-TO-END PIPELINE EXECUTION
+2026-04-24 04:52:20,902 - INFO - [pipeline:end_to_end_pipeline] - ================================================================================
+2026-04-24 04:52:20,902 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 1] USER QUERY INPUT
+2026-04-24 04:52:20,902 - INFO - [pipeline:end_to_end_pipeline] - Query: 'What are the economic growth projections?'
+2026-04-24 04:52:20,903 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 2] RETRIEVAL
+2026-04-24 04:52:20,923 - INFO - [pipeline:end_to_end_pipeline] - Retrieved 5 documents
+2026-04-24 04:52:20,923 - INFO - [pipeline:end_to_end_pipeline] - Similarity scores: ['0.4818', '0.4334', '0.3317', '0.2817', '0.3163']
+2026-04-24 04:52:20,923 - INFO - [pipeline:end_to_end_pipeline] - Domain scores: ['0.6667', '0.6667', '0.6667', '0.3333', '0.3333']
+2026-04-24 04:52:20,923 - INFO - [pipeline:end_to_end_pipeline] - Keyword scores: ['0.6667', '0.6667', '0.3333', '0.3333', '0.1667']
+2026-04-24 04:52:20,924 - INFO - [pipeline:end_to_end_pipeline] - Combined scores: ['0.5743', '0.5501', '0.4325', '0.3075', '0.2915']
+2026-04-24 04:52:20,924 - INFO - [pipeline:end_to_end_pipeline] -   Result 1: Similarity=0.4818, Domain=0.6667, Keyword=0.6667, Combined=0.5743, Distance=0.5182
+2026-04-24 04:52:20,924 - INFO - [pipeline:end_to_end_pipeline] -   Result 2: Similarity=0.4334, Domain=0.6667, Keyword=0.6667, Combined=0.5501, Distance=0.5666
+2026-04-24 04:52:20,925 - INFO - [pipeline:end_to_end_pipeline] -   Result 3: Similarity=0.3317, Domain=0.6667, Keyword=0.3333, Combined=0.4325, Distance=0.6683
+2026-04-24 04:52:20,925 - INFO - [pipeline:end_to_end_pipeline] -   Result 4: Similarity=0.2817, Domain=0.3333, Keyword=0.3333, Combined=0.3075, Distance=0.7183
+2026-04-24 04:52:20,925 - INFO - [pipeline:end_to_end_pipeline] -   Result 5: Similarity=0.3163, Domain=0.3333, Keyword=0.1667, Combined=0.2915, Distance=0.6837
+2026-04-24 04:52:20,926 - INFO - [pipeline:end_to_end_pipeline] - [STAGE 3] CONTEXT SELECTION: 1503 chars selected
