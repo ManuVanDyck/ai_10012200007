@@ -1,2 +1,0 @@
-# System dependencies for Streamlit Community Cloud
-# This file ensures proper installation of torch and other ML libraries
