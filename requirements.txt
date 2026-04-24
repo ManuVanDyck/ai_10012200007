@@ -1,18 +1,23 @@
 # Web Framework
 streamlit>=1.35.0
 
-# Critical Fix for AttributeError
-# Keep this under 2.0.0 because many ML libraries still use old aliases
+# Critical Fix for AttributeError (Keeps NumPy from breaking ChromaDB)
 numpy>=1.26.0,<2.0.0
 
-# Vector Database (Updated to 2026 stable releases)
+# Vector Database & Embeddings
 chromadb>=1.5.8
 sentence-transformers>=3.0.0
 
-# Deep Learning (Updated for Python 3.14 stability)
+# Deep Learning
 torch>=2.10.0
 torchvision>=0.21.0
 huggingface_hub>=0.25.0
+
+# Protobuf & Telemetry Fixes (Resolves the GeneratedCode error)
+protobuf==4.25.3
+opentelemetry-api>=1.20.0
+opentelemetry-sdk>=1.20.0
+opentelemetry-exporter-otlp-proto-grpc>=1.20.0
 
 # Data & PDF Processing
 pandas>=2.2.0
