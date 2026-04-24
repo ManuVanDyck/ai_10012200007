@@ -1,10 +1,20 @@
-streamlit>=1.28.0
-sentence-transformers>=2.2.2
-torch>=2.0.0
-torchvision>=0.15.0
-chromadb>=0.4.0
-numpy>=1.24.0,<2.0.0
-pandas>=2.0.0
+# Web Framework
+streamlit>=1.35.0
+
+# Critical Fix for AttributeError
+# Keep this under 2.0.0 because many ML libraries still use old aliases
+numpy>=1.26.0,<2.0.0
+
+# Vector Database (Updated to 2026 stable releases)
+chromadb>=1.5.8
+sentence-transformers>=3.0.0
+
+# Deep Learning (Updated for Python 3.14 stability)
+torch>=2.10.0
+torchvision>=0.21.0
+huggingface_hub>=0.25.0
+
+# Data & PDF Processing
+pandas>=2.2.0
+scikit-learn>=1.4.0
 PyPDF2>=3.0.0
-scikit-learn>=1.3.0
-huggingface_hub>=0.16.0
